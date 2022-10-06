@@ -1,33 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React, { useState } from 'react'
+
 import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import Header from './Pages/Shared/Header'
+import Homepage from './Pages/Homepage/Components/index'
+import CoinPage from './Pages/Coin/Components/index'
+import lightTheme from './Pages/Shared/Themes/lightTheme'
+import darkTheme from './Pages/Shared/Themes/darkTheme'
+import CryptoContext from './Pages/Shared/CryptoContext'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [theme, setTheme] = useState('light')
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark')
+    } else {
+      setTheme('light')
+    }
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <CryptoContext>
+        <BrowserRouter>
+          <div style={{ backgroundColor: '#fff', color: 'white', minHeight: '100vh', minWidth: '100vw' }}>
+            <Header />
+            <Routes>
+              <Route path='/' element={<Homepage />} exact />
+              <Route element={<CoinPage />} path='/coins/:id' />
+            </Routes>
+          </div>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </BrowserRouter>
+      </CryptoContext>
+    </ThemeProvider>
   )
 }
 

@@ -1,0 +1,59 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "overrides": [
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
+  "rules": {
+    "quotes": [
+      1,
+      "single"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "semi": "off",
+    /*
+     * React rules
+     */
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react-hooks/rules-of-hooks": "error",
+    /*
+     * Prettier rules
+     */
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120,
+        "trailingComma": "es5",
+        "tabWidth": 2,
+        "semi": false,
+        "singleQuote": true,
+        "jsxSingleQuote": true,
+        "endOfLine": "lf"
+      }
+    ]
+  }
+}
