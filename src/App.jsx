@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import Header from './Header/Components/index'
 import Homepage from './Pages/Homepage/Components/index'
@@ -12,8 +12,8 @@ import darkTheme from './Pages/Shared/Themes/darkTheme'
 import CurrencyContext from './Pages/Shared/Contexts/CurrencyContext'
 
 function App() {
-  const isCurrentThemeDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches
-  const [theme, setTheme] = useState(isCurrentThemeDark() ? 'dark' : 'light')
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  const [theme, setTheme] = useState(prefersDarkMode ? 'dark' : 'light')
 
   const toggleTheme = () => {
     if (theme === 'light') {
