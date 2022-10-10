@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { CircularProgress } from '@mui/material'
 import Banner from './Banner'
 import CoinsTable from './CoinsTable'
 import { useCoins } from '../../Shared/Helpers/api'
@@ -9,7 +10,7 @@ function Homepage() {
   const { coins, coinsIsLoading } = useCoins(currency)
 
   if (coinsIsLoading) {
-    return <p>Loading!</p>
+    return <CircularProgress />
   }
 
   return (

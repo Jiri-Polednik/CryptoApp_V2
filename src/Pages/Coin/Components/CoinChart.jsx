@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Container, styled, useTheme } from '@mui/material'
+import { CircularProgress, Container, styled, useTheme } from '@mui/material'
 import { useCoinHistory } from '../../Shared/Helpers/api'
 import { Currency } from '../../Shared/Contexts/CurrencyContext'
 import Chart from './Chart'
@@ -26,7 +26,7 @@ function CoinChart(props) {
   })
 
   if (coinHistoryIsLoading) {
-    return <p>Loading!</p>
+    return <CircularProgress />
   }
 
   return (

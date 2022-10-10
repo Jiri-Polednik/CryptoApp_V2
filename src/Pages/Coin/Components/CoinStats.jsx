@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Container, styled, Typography, useTheme } from '@mui/material'
+import { CircularProgress, Container, styled, Typography, useTheme } from '@mui/material'
 import { Currency } from '../../Shared/Contexts/CurrencyContext'
 import { useCoinFullInfo, useCoinInfo } from '../../Shared/Helpers/api'
 
@@ -23,7 +23,7 @@ function CoinStats(props) {
   })
 
   if (coinInfoIsLoading || coinFullInfoIsLoading) {
-    return <p>Loading!</p>
+    return <CircularProgress />
   }
   const { PRICE: price, CHANGEPCT24HOUR: change, MKTCAP: marketCap, VOLUME24HOURTO: volume24hTo } = coinFullInfo
 
