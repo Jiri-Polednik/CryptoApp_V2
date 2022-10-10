@@ -5,6 +5,7 @@ import CarouselItem from './CarouselItem'
 
 const BannerDiv = styled('div')({
   backgroundSize: 'cover',
+  backgroundPosition: 'center',
 })
 
 const BannerContainer = styled(Container)({

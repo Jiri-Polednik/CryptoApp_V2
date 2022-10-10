@@ -27,18 +27,11 @@ function App() {
       <CurrencyContext>
         <BrowserRouter>
           <CssBaseline />
-          <div
-            style={{
-              minHeight: '100vh',
-              minWidth: '100vw',
-            }}
-          >
-            <Header toggleTheme={toggleTheme} />
-            <Routes>
-              <Route path='/' element={<Homepage />} exact />
-              <Route element={<CoinPage />} path='/coins/:id' />
-            </Routes>
-          </div>
+          <Header toggleTheme={toggleTheme} />
+          <Routes>
+            <Route path='/' element={<Homepage />} exact />
+            <Route element={<CoinPage />} path='/coins/:id' />
+          </Routes>
           <ReactQueryDevtools initialIsOpen={false} />
         </BrowserRouter>
       </CurrencyContext>

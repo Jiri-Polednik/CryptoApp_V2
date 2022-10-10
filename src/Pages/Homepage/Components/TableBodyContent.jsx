@@ -16,20 +16,15 @@ function TableBodyContent(props) {
         onClick={() => navigate(`/coins/${crypto?.CoinInfo?.Name}`)}
         key={crypto?.CoinInfo?.Name}
       >
-        <TableCell
-          component='th'
-          scope='row'
-          sx={{
-            display: 'flex',
-            gap: 15,
-          }}
-        >
+        <TableCell>
           <img
             src={`https://www.cryptocompare.com${crypto?.CoinInfo?.ImageUrl}`}
             alt={crypto.name}
             height='50'
             style={{ marginBottom: 10 }}
           />
+        </TableCell>
+        <TableCell>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
               style={{

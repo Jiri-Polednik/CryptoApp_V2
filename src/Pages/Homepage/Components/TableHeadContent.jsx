@@ -4,8 +4,12 @@ import { TableCell, TableRow } from '@mui/material'
 function TableHeadContent() {
   return (
     <TableRow>
-      {['Coin', 'Price', '24h Change', 'Market Cap'].map((header) => (
-        <TableCell sx={{ fontWeight: '600' }} key={header} align={header === 'Coin' ? 'left' : 'right'}>
+      {['Symbol', 'Name', 'Price', '24h Change', 'Market Cap'].map((header) => (
+        <TableCell
+          sx={{ fontWeight: '600' }}
+          key={header}
+          align={header === 'Symbol' || header === 'Name' ? 'left' : 'right'}
+        >
           {header}
         </TableCell>
       ))}

@@ -23,11 +23,14 @@ function CoinsTable(props) {
         crypto.CoinInfo.Name.toLowerCase().includes(searchParam) ||
         crypto.CoinInfo.FullName.toLowerCase().includes(searchParam)
     )
+  const handlePageChange = (event, value) => {
+    setPage(value)
+  }
 
   const cryptosPage = handleSearch().slice((page - 1) * 10, page * 10)
 
   return (
-    <Container sx={{ textAlign: 'center' }}>
+    <Container sx={{ textAlign: 'center', marginBottom: 3 }}>
       <Typography variant='h4' sx={{ marginTop: 5 }}>
         Cryptocurrencies Ordered by Market Cap
       </Typography>
@@ -51,8 +54,8 @@ function CoinsTable(props) {
       <Pagination
         sx={{ paddingTop: 3, width: '100%', display: 'flex', justifyContent: 'center' }}
         count={handleSearch() ? +(handleSearch().length / 10).toFixed(0) : 1}
-        onChange={(event) => {
-          setPage(event.target.textContent)
+        onChange={(event, value) => {
+          handlePageChange(event, value)
         }}
       />
     </Container>
