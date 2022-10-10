@@ -19,7 +19,7 @@ function TableBodyContent(props) {
         <TableCell
           component='th'
           scope='row'
-          style={{
+          sx={{
             display: 'flex',
             gap: 15,
           }}
@@ -45,7 +45,7 @@ function TableBodyContent(props) {
         <TableCell align='right'>{crypto?.DISPLAY ? `${crypto.DISPLAY[currency].PRICE}` : 'No Data'}</TableCell>
         <TableCell
           align='right'
-          style={{
+          sx={{
             color: profit > 0.0 ? 'rgb(14, 203, 129)' : 'red',
             fontWeight: 500,
           }}

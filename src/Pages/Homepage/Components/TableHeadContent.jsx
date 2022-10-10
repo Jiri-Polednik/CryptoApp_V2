@@ -6,7 +6,7 @@ function TableHeadContent() {
     <TableRow>
       {['Coin', 'Price', '24h Change', 'Market Cap'].map((header) => (
         <TableCell sx={{ fontWeight: '600' }} key={header} align={header === 'Coin' ? 'left' : 'right'}>
-          <p>{header}</p>
+          {header}
         </TableCell>
       ))}
     </TableRow>
