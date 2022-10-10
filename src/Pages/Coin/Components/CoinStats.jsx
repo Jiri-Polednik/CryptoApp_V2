@@ -30,7 +30,7 @@ function CoinStats(props) {
   return (
     <Sidebar>
       <img src={`https://www.cryptocompare.com${coinInfo.ImageUrl}`} height={240} alt={`${coinInfo.FullName} Logo`} />
-      <Typography variant='h2'>{coinInfo.FullName}</Typography>
+      <Typography variant='h3'>{coinInfo.FullName}</Typography>
       <Typography variant='h6'>Price: {price}</Typography>
       <Typography variant='h6'>Market Cap: {marketCap}</Typography>
       <Typography variant='h6'>Traded (24h): {volume24hTo}</Typography>

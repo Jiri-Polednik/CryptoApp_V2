@@ -38,7 +38,7 @@ function CoinsTable(props) {
       <TextField
         label='Search For a Cryptocurrency...'
         variant='standard'
-        sx={{ marginBottom: 20, width: '100%' }}
+        sx={{ marginBottom: 5, width: '100%' }}
         value={searchParam}
         onChange={(event) => setSearchParam(event.target.value)}
       />
@@ -47,11 +47,7 @@ function CoinsTable(props) {
           <TableHead>
             <TableRow>
               {['Coin', 'Price', '24h Change', 'Market Cap'].map((header) => (
-                <TableCell
-                  sx={{ color: 'black', fontWeight: '600' }}
-                  key={header}
-                  align={header === 'Coin' ? 'left' : 'right'}
-                >
+                <TableCell sx={{ fontWeight: '600' }} key={header} align={header === 'Coin' ? 'left' : 'right'}>
                   <p>{header}</p>
                 </TableCell>
               ))}

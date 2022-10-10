@@ -12,13 +12,15 @@ function ThemeToggle(props) {
     <Box
       onClick={toggleTheme}
       sx={{
+        cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'background.default',
         color: 'text.primary',
         borderRadius: 1,
-        paddingLeft: 5,
+        paddingLeft: 3,
+        marginLeft: 5,
       }}
     >
       {theme.palette.mode} mode

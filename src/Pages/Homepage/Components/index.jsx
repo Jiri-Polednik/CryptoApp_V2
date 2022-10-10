@@ -6,7 +6,6 @@ import { Currency } from '../../Shared/Contexts/CurrencyContext'
 
 function Homepage() {
   const { currency } = useContext(Currency)
-
   const { coins, coinsIsLoading } = useCoins(currency)
 
   if (coinsIsLoading) {

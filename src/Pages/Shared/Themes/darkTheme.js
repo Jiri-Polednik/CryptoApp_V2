@@ -7,7 +7,7 @@ import components from './components'
 const palette = createPalette({
   mode: 'dark',
   primary: {
-    main: appPalette.GOLD['500'],
+    main: appPalette.GRAY['50'],
     contrastText: appPalette.GRAY['800'],
   },
   secondary: {
@@ -18,11 +18,14 @@ const palette = createPalette({
     default: appPalette.GRAY['800'],
     paper: appPalette.GRAY['400'],
   },
+  graph: {
+    default: appPalette.GOLD['300'],
+  },
 })
 
 export default createTheme({
   palette,
-  companyPalette: appPalette,
+  appPalette,
   typography,
   components: {
     ...components,

@@ -10,9 +10,11 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
+import { useTheme } from '@mui/material'
 import getDate from '../Helpers/getDate'
 
 function Chart(props) {
+  const theme = useTheme()
   const { coinHistory } = props
   ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
@@ -50,8 +52,7 @@ function Chart(props) {
       {
         label: 'Dataset 1',
         data: coinHistory.map(({ high }) => high),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: theme.palette.graph.default,
       },
     ],
   }

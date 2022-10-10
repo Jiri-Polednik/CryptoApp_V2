@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Typography, useTheme } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Currency } from '../../Shared/Contexts/CurrencyContext'
 
 function CarouselItem(props) {
@@ -8,7 +8,6 @@ function CarouselItem(props) {
   const { currency } = useContext(Currency)
   const change = item.RAW[currency].CHANGEPCT24HOUR
 
-  const theme = useTheme()
   return (
     <Link to={`/coins/${item?.CoinInfo?.Name}`}>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -22,7 +21,9 @@ function CarouselItem(props) {
       <Typography align='center' variant='h3'>
         {item?.CoinInfo?.FullName}
       </Typography>
-      <Typography align='center'>{Math.round(change * 100) / 100}%</Typography>
+      <Typography variant='h5' align='center'>
+        {Math.round(change * 100) / 100}%
+      </Typography>
     </Link>
   )
 }

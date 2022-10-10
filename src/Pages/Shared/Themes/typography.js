@@ -12,12 +12,14 @@ const typography = (palette) => ({
     fontWeight: 400,
     fontFamily: defaultFontFamily,
     marginBottom: '0.8rem',
+    color: palette.primary.main,
   },
   h3: {
     fontSize: '2.6rem',
     fontWeight: 300,
     fontFamily: defaultFontFamily,
     marginBottom: '0.6rem',
+    color: palette.secondary.contrastText,
   },
   h4: {
     fontSize: '2rem',
@@ -30,6 +32,7 @@ const typography = (palette) => ({
     fontWeight: 300,
     fontFamily: defaultFontFamily,
     marginBottom: '0.4rem',
+    color: palette.secondary.contrastText,
   },
   h6: {
     fontSize: '1.5rem',
@@ -49,6 +52,7 @@ const typography = (palette) => ({
     fontSize: '1.1rem',
     fontFamily: defaultFontFamily,
   },
+  subtitle2: { fontSize: '1.6rem', fontFamily: defaultFontFamily, color: palette.secondary.contrastText },
 })
 
 export default typography
