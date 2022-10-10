@@ -10,3 +10,7 @@ Description
 - generate api key 
 - create .env file in root directory
 - in the .env add VITE_API_KEY={YOUR_API_KEY}
+
+## Test domain
+
+- https://cryptoapp2.vercel.app
