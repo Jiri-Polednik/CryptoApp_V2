@@ -1,25 +1,21 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
 import {
   Container,
   Table,
-  TableBody,
-  TableCell,
   TableContainer,
-  TableHead,
-  TableRow,
   TextField,
   Typography,
   Pagination,
+  TableHead,
+  TableBody,
 } from '@mui/material'
-import { Currency } from '../../Shared/Contexts/CurrencyContext'
+import TableHeadContent from './TableHeadContent'
+import TableBodyContent from './TableBodyContent'
 
 function CoinsTable(props) {
-  const navigate = useNavigate()
   const { cryptos } = props
   const [searchParam, setSearchParam] = useState('')
   const [page, setPage] = useState(1)
-  const { currency } = useContext(Currency)
 
   const handleSearch = () =>
     cryptos.filter(
@@ -32,7 +28,7 @@ function CoinsTable(props) {
 
   return (
     <Container sx={{ textAlign: 'center' }}>
-      <Typography variant='h4' sx={{ margin: 5 }}>
+      <Typography variant='h4' sx={{ marginTop: 5 }}>
         Cryptocurrencies Ordered by Market Cap
       </Typography>
       <TextField
@@ -45,71 +41,15 @@ function CoinsTable(props) {
       <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
           <TableHead>
-            <TableRow>
-              {['Coin', 'Price', '24h Change', 'Market Cap'].map((header) => (
-                <TableCell sx={{ fontWeight: '600' }} key={header} align={header === 'Coin' ? 'left' : 'right'}>
-                  <p>{header}</p>
-                </TableCell>
-              ))}
-            </TableRow>
+            <TableHeadContent />
           </TableHead>
           <TableBody>
-            {cryptosPage.map((crypto) => {
-              const profit = crypto?.RAW ? crypto.RAW[currency].CHANGEPCT24HOUR > 0 : 'No Data'
-
-              return (
-                <TableRow
-                  sx={{ cursor: 'pointer' }}
-                  onClick={() => navigate(`/coins/${crypto?.CoinInfo?.Name}`)}
-                  key={crypto?.CoinInfo?.Name}
-                >
-                  <TableCell
-                    component='th'
-                    scope='row'
-                    style={{
-                      display: 'flex',
-                      gap: 15,
-                    }}
-                  >
-                    <img
-                      src={`https://www.cryptocompare.com${crypto?.CoinInfo?.ImageUrl}`}
-                      alt={crypto.name}
-                      height='50'
-                      style={{ marginBottom: 10 }}
-                    />
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span
-                        style={{
-                          textTransform: 'uppercase',
-                          fontSize: 22,
-                        }}
-                      >
-                        {crypto?.CoinInfo?.FullName}
-                      </span>
-                      <span style={{ color: 'darkgrey' }}>{crypto.CoinInfo.FullName}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell align='right'>
-                    {crypto?.DISPLAY ? `${crypto.DISPLAY[currency].PRICE}` : 'No Data'}
-                  </TableCell>
-                  <TableCell
-                    align='right'
-                    style={{
-                      color: profit > 0.0 ? 'rgb(14, 203, 129)' : 'red',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {crypto?.RAW ? `${Math.round(crypto.RAW[currency].CHANGEPCT24HOUR * 100) / 100}%` : 'No Data'}
-                  </TableCell>
-                  <TableCell align='right'>{crypto.DISPLAY ? crypto.DISPLAY[currency].MKTCAP : 'No Data'}</TableCell>
-                </TableRow>
-              )
-            })}
+            <TableBodyContent cryptosPage={cryptosPage} />
           </TableBody>
         </Table>
       </TableContainer>
       <Pagination
-        sx={{ paddingTop: 10, width: '100%', display: 'flex', justifyContent: 'center' }}
+        sx={{ paddingTop: 3, width: '100%', display: 'flex', justifyContent: 'center' }}
         count={handleSearch() ? +(handleSearch().length / 10).toFixed(0) : 1}
         onChange={(event) => {
           setPage(event.target.textContent)
