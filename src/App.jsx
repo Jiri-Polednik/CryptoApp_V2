@@ -12,7 +12,8 @@ import darkTheme from './Pages/Shared/Themes/darkTheme'
 import CurrencyContext from './Pages/Shared/Contexts/CurrencyContext'
 
 function App() {
-  const [theme, setTheme] = useState('light')
+  const isCurrentThemeDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [theme, setTheme] = useState(isCurrentThemeDark() ? 'dark' : 'light')
 
   const toggleTheme = () => {
     if (theme === 'light') {
