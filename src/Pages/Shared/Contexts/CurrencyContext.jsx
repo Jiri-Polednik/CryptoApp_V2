@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useMemo, useState } from 'react'
 
-export const Crypto = createContext(null)
+export const Currency = createContext(null)
 
-function CryptoContext({ children }) {
+function CurrencyContext({ children }) {
   const [currency, setCurrency] = useState('EUR')
   const [symbol, setSymbol] = useState('€')
 
@@ -21,7 +21,7 @@ function CryptoContext({ children }) {
     [currency]
   )
 
-  return <Crypto.Provider value={value}>{children}</Crypto.Provider>
+  return <Currency.Provider value={value}>{children}</Currency.Provider>
 }
 
-export default CryptoContext
+export default CurrencyContext

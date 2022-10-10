@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { AppBar, Container, FormControl, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { Crypto } from './CryptoContext'
+import { Currency } from './Contexts/CurrencyContext'
 
 function Header() {
-  const { currency, setCurrency } = useContext(Crypto)
+  const { currency, setCurrency } = useContext(Currency)
   const handleCurrencyChange = (event) => {
     setCurrency(event.target.value)
   }

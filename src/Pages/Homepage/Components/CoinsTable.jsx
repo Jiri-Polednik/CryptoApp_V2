@@ -12,14 +12,14 @@ import {
   Typography,
   Pagination,
 } from '@mui/material'
-import { Crypto } from '../../Shared/CryptoContext'
+import { Currency } from '../../Shared/Contexts/CurrencyContext'
 
 function CoinsTable(props) {
   const navigate = useNavigate()
   const { cryptos } = props
   const [searchParam, setSearchParam] = useState('')
   const [page, setPage] = useState(1)
-  const { currency } = useContext(Crypto)
+  const { currency } = useContext(Currency)
 
   const handleSearch = () =>
     cryptos.filter(
@@ -47,7 +47,11 @@ function CoinsTable(props) {
           <TableHead>
             <TableRow>
               {['Coin', 'Price', '24h Change', 'Market Cap'].map((header) => (
-                <TableCell sx={{ color: 'black', fontWeight: '600' }} key={header}>
+                <TableCell
+                  sx={{ color: 'black', fontWeight: '600' }}
+                  key={header}
+                  align={header === 'Coin' ? 'left' : 'right'}
+                >
                   <p>{header}</p>
                 </TableCell>
               ))}
@@ -90,7 +94,7 @@ function CoinsTable(props) {
                     </div>
                   </TableCell>
                   <TableCell align='right'>
-                    {crypto?.RAW ? `${Math.round(crypto.RAW[currency].PRICE * 100) / 100} ${currency}` : 'No Data'}
+                    {crypto?.DISPLAY ? `${crypto.DISPLAY[currency].PRICE}` : 'No Data'}
                   </TableCell>
                   <TableCell
                     align='right'

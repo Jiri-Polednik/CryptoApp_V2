@@ -1,25 +1,22 @@
 import React, { useContext } from 'react'
-import { useQuery } from 'react-query'
 import Banner from './Banner'
 import CoinsTable from './CoinsTable'
-import api from '../../Shared/Helpers/api'
-import { Crypto } from '../../Shared/CryptoContext'
+import { useCoins } from '../../Shared/Helpers/api'
+import { Currency } from '../../Shared/Contexts/CurrencyContext'
 
 function Homepage() {
-  const { currency } = useContext(Crypto)
-  const { data, error, isLoading } = useQuery(`coins${currency}`, () =>
-    api.get(`/top/totalvolfull?limit=100&tsym=${currency}`)
-  )
-  const cryptos = data?.data?.Data
+  const { currency } = useContext(Currency)
 
-  if (isLoading) {
+  const { coins, coinsIsLoading } = useCoins(currency)
+
+  if (coinsIsLoading) {
     return <p>Loading!</p>
   }
 
   return (
     <>
-      <Banner cryptos={cryptos.slice(0, 9)} />
-      <CoinsTable cryptos={cryptos} />
+      <Banner cryptos={coins.slice(0, 9)} />
+      <CoinsTable cryptos={coins} />
     </>
   )
 }

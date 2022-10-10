@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Typography } from '@mui/material'
-import { Crypto } from '../../Shared/CryptoContext'
+import { Typography, useTheme } from '@mui/material'
+import { Currency } from '../../Shared/Contexts/CurrencyContext'
 
 function CarouselItem(props) {
   const { item } = props
-  const { currency } = useContext(Crypto)
+  const { currency } = useContext(Currency)
   const change = item.RAW[currency].CHANGEPCT24HOUR
 
+  const theme = useTheme()
   return (
     <Link to={`/coins/${item?.CoinInfo?.Name}`}>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>

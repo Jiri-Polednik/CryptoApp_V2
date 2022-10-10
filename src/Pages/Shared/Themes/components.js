@@ -1,11 +1,4 @@
 const components = {
-  MuiButton: {
-    styleOverrides: {
-      root: {
-        borderRadius: '50px',
-      },
-    },
-  },
   MuiPaper: {
     styleOverrides: {
       outlined: {

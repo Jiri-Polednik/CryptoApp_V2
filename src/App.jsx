@@ -9,7 +9,7 @@ import Homepage from './Pages/Homepage/Components/index'
 import CoinPage from './Pages/Coin/Components/index'
 import lightTheme from './Pages/Shared/Themes/lightTheme'
 import darkTheme from './Pages/Shared/Themes/darkTheme'
-import CryptoContext from './Pages/Shared/CryptoContext'
+import CurrencyContext from './Pages/Shared/Contexts/CurrencyContext'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -24,9 +24,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <CryptoContext>
+      <CurrencyContext>
         <BrowserRouter>
-          <div style={{ backgroundColor: '#fff', color: 'white', minHeight: '100vh', minWidth: '100vw' }}>
+          <div style={{ backgroundColor: '#fff', minHeight: '100vh', minWidth: '100vw' }}>
             <Header />
             <Routes>
               <Route path='/' element={<Homepage />} exact />
@@ -35,7 +35,7 @@ function App() {
           </div>
           <ReactQueryDevtools initialIsOpen={false} />
         </BrowserRouter>
-      </CryptoContext>
+      </CurrencyContext>
     </ThemeProvider>
   )
 }
