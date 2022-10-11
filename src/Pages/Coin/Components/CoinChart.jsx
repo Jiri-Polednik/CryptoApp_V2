@@ -26,7 +26,11 @@ function CoinChart(props) {
   })
 
   if (coinHistoryIsLoading) {
-    return <CircularProgress />
+    return (
+      <ChartContainer>
+        <CircularProgress />
+      </ChartContainer>
+    )
   }
 
   return (

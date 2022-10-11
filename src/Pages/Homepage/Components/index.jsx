@@ -10,7 +10,19 @@ function Homepage() {
   const { coins, coinsIsLoading } = useCoins(currency)
 
   if (coinsIsLoading) {
-    return <CircularProgress />
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          width: '100vw',
+        }}
+      >
+        <CircularProgress />
+      </div>
+    )
   }
 
   return (

@@ -23,7 +23,11 @@ function CoinStats(props) {
   })
 
   if (coinInfoIsLoading || coinFullInfoIsLoading) {
-    return <CircularProgress />
+    return (
+      <Sidebar>
+        <CircularProgress />
+      </Sidebar>
+    )
   }
   const { PRICE: price, CHANGEPCT24HOUR: change, MKTCAP: marketCap, VOLUME24HOURTO: volume24hTo } = coinFullInfo
 
