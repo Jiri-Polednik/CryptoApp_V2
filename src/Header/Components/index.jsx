@@ -15,7 +15,7 @@ function Header(props) {
 
   return (
     <AppBar position='static' color='transparent'>
-      <Container sx={{ minWidth: '100vw', height: 80, display: 'flex', margin: 0, padding: 0 }}>
+      <Container sx={{ minWidth: '100%', height: 80, display: 'flex', margin: 0, padding: 0 }}>
         <Toolbar sx={{ alignSelf: 'center', width: '100%' }}>
           <Typography
             sx={{
