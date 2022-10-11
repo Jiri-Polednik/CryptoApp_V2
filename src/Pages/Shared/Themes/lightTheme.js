@@ -15,7 +15,7 @@ const palette = createPalette({
   },
   background: {
     default: appPalette.GRAY['50'],
-    paper: appPalette.GRAY['50'],
+    paper: appPalette.GRAY['100'],
   },
   graph: {
     default: appPalette.GOLD['500'],

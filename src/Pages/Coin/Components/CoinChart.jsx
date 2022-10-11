@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { CircularProgress, Container, styled, useTheme } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { useCoinHistory } from '../../Shared/Helpers/api'
 import { Currency } from '../../Shared/Contexts/CurrencyContext'
 import Chart from './Chart'
@@ -8,7 +9,8 @@ function CoinChart(props) {
   const theme = useTheme()
   const { id } = props
   const { currency } = useContext(Currency)
-  const { coinHistory, coinHistoryIsLoading } = useCoinHistory(id, currency)
+  const { coinHistory, coinHistoryIsError, coinHistoryIsLoading } = useCoinHistory(id, currency)
+  const navigate = useNavigate()
 
   const ChartContainer = styled(Container)({
     width: '100%',
@@ -32,12 +34,16 @@ function CoinChart(props) {
       </ChartContainer>
     )
   }
+  if (coinHistoryIsError) {
+    return navigate('/error')
+  }
 
-  return (
-    <ChartContainer>
-      <Chart coinHistory={coinHistory} />
-    </ChartContainer>
-  )
+  if (!(coinHistoryIsLoading && coinHistoryIsError))
+    return (
+      <ChartContainer>
+        <Chart coinHistory={coinHistory} />
+      </ChartContainer>
+    )
 }
 
 export default CoinChart

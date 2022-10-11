@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { CircularProgress, Container, styled, Typography, useTheme } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { Currency } from '../../Shared/Contexts/CurrencyContext'
 import { useCoinFullInfo, useCoinInfo } from '../../Shared/Helpers/api'
 
@@ -7,8 +8,9 @@ function CoinStats(props) {
   const { id } = props
   const { currency } = useContext(Currency)
   const theme = useTheme()
-  const { coinInfo, coinInfoIsLoading } = useCoinInfo(id, currency)
-  const { coinFullInfo, coinFullInfoIsLoading } = useCoinFullInfo(id, currency)
+  const { coinInfo, coinInfoIsError, coinInfoIsLoading } = useCoinInfo(id, currency)
+  const { coinFullInfo, coinFullInfoIsError, coinFullInfoIsLoading } = useCoinFullInfo(id, currency)
+  const navigate = useNavigate()
 
   const Sidebar = styled(Container)({
     width: '50%',
@@ -29,8 +31,12 @@ function CoinStats(props) {
       </Sidebar>
     )
   }
-  const { PRICE: price, CHANGEPCT24HOUR: change, MKTCAP: marketCap, VOLUME24HOURTO: volume24hTo } = coinFullInfo
 
+  if (coinInfoIsError || coinFullInfoIsError) {
+    return navigate('/error')
+  }
+
+  const { PRICE: price, CHANGEPCT24HOUR: change, MKTCAP: marketCap, VOLUME24HOURTO: volume24hTo } = coinFullInfo
   return (
     <Sidebar>
       <img src={`https://www.cryptocompare.com${coinInfo.ImageUrl}`} height={240} alt={`${coinInfo.FullName} Logo`} />

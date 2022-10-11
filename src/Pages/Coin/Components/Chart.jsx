@@ -51,7 +51,7 @@ function Chart(props) {
     datasets: [
       {
         label: 'Dataset 1',
-        data: coinHistory.map(({ high }) => high),
+        data: coinHistory?.map(({ high }) => high),
         borderColor: theme.palette.graph.default,
       },
     ],

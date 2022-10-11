@@ -10,6 +10,7 @@ import CoinPage from './Pages/Coin/Components/index'
 import lightTheme from './Pages/Shared/Themes/lightTheme'
 import darkTheme from './Pages/Shared/Themes/darkTheme'
 import CurrencyContext from './Pages/Shared/Contexts/CurrencyContext'
+import ErrorPage from './Pages/Error/Components/index'
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -32,6 +33,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Homepage />} exact />
             <Route element={<CoinPage />} path='/coins/:id' />
+            <Route element={<ErrorPage />} path='/error' />
+            <Route element={<ErrorPage />} path='*' />
           </Routes>
           <ReactQueryDevtools initialIsOpen={false} />
         </BrowserRouter>

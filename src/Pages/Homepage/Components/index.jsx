@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { CircularProgress } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import Banner from './Banner'
 import CoinsTable from './CoinsTable'
 import { useCoins } from '../../Shared/Helpers/api'
@@ -7,7 +8,8 @@ import { Currency } from '../../Shared/Contexts/CurrencyContext'
 
 function Homepage() {
   const { currency } = useContext(Currency)
-  const { coins, coinsIsLoading } = useCoins(currency)
+  const { coins, coinsIsError, coinsIsLoading } = useCoins(currency)
+  const navigate = useNavigate()
 
   if (coinsIsLoading) {
     return (
@@ -23,6 +25,10 @@ function Homepage() {
         <CircularProgress />
       </div>
     )
+  }
+
+  if (coinsIsError) {
+    return navigate('/error')
   }
 
   return (
