@@ -24,8 +24,8 @@ function Banner(props) {
       sx={{
         backgroundImage:
           theme.palette.mode === 'light'
-            ? 'url(../../../../images/banner_background_light.webp)'
-            : 'url(../../../../images/banner_background_dark.webp)',
+            ? 'url(../../../../banner_background_light.webp)'
+            : 'url(../../../../banner_background_dark.webp)',
       }}
     >
       <BannerContainer>
