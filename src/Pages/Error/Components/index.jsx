@@ -5,11 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 function ErrorPage() {
   const theme = useTheme()
-  const { navigate } = useNavigate()
-
-  function navigateHome() {
-    navigate('/')
-  }
+  const navigate = useNavigate()
 
   return (
     <Box
@@ -28,7 +24,7 @@ function ErrorPage() {
       <Typography variant='h6' sx={{ color: theme.palette.primary.main }}>
         Something went wrong
       </Typography>
-      <Button variant='contained' onClick={navigateHome}>
+      <Button variant='contained' onClick={() => navigate('/')}>
         Back Home
       </Button>
     </Box>
