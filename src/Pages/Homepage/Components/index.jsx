@@ -27,13 +27,15 @@ function Homepage() {
     )
   }
 
+  const validCoins = coins.filter((coin) => coin.RAW && coin.RAW[currency] !== undefined)
+
   if (coinsIsError) {
     return navigate('/error')
   }
 
   return (
     <>
-      <Banner cryptos={coins.slice(0, 9)} />
+      <Banner cryptos={validCoins.slice(0, 9)} />
       <CoinsTable cryptos={coins} />
     </>
   )
