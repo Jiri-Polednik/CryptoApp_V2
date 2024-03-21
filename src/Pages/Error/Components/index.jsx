@@ -1,9 +1,15 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import { Button, Typography, useTheme } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function ErrorPage() {
   const theme = useTheme()
+  const { navigate } = useNavigate()
+
+  function navigateHome() {
+    navigate('/')
+  }
 
   return (
     <Box
@@ -22,7 +28,9 @@ function ErrorPage() {
       <Typography variant='h6' sx={{ color: theme.palette.primary.main }}>
         Something went wrong
       </Typography>
-      <Button variant='contained'>Back Home</Button>
+      <Button variant='contained' onClick={navigateHome}>
+        Back Home
+      </Button>
     </Box>
   )
 }
