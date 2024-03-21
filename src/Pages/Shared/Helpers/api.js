@@ -44,6 +44,6 @@ export const useCoinFullInfo = (id, currency) => {
   let coinFullInfo = data?.data?.Data.find((item) => item.CoinInfo.Name === id)
   coinFullInfo = coinFullInfo?.DISPLAY[currency]
 
-  const coinFullInfoIsError = data?.data?.Response === 'Error' || isError
+  const coinFullInfoIsError = data?.data?.Response === 'Error' || isError || coinFullInfo === undefined
   return { coinFullInfo, coinFullInfoIsError, coinFullInfoIsLoading: isLoading }
 }

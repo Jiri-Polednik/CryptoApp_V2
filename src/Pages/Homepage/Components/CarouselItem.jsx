@@ -6,7 +6,7 @@ import { Currency } from '../../Shared/Contexts/CurrencyContext'
 function CarouselItem(props) {
   const { item } = props
   const { currency } = useContext(Currency)
-  const change = item.RAW[currency].CHANGEPCT24HOUR
+  const change = item.RAW[currency].CHANGEPCT24HOUR || 'No Data'
 
   return (
     <Link to={`/coins/${item?.CoinInfo?.Name}`}>
